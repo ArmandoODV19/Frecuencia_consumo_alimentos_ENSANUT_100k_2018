@@ -21,7 +21,7 @@ nutri_plot <- function(x = ensanut_100k, food){
     filter(edad_categorica == "preescolares") %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica) %>%
@@ -30,7 +30,7 @@ nutri_plot <- function(x = ensanut_100k, food){
     filter(edad_categorica == "escolares") %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica) %>%
@@ -39,7 +39,7 @@ nutri_plot <- function(x = ensanut_100k, food){
     filter(edad_categorica == "adultos") %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -47,9 +47,9 @@ nutri_plot <- function(x = ensanut_100k, food){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos"))) %>%
     ggplot(aes(x = dias_comio, y = porcentaje, fill = edad_categorica)) +
@@ -72,7 +72,7 @@ nutri_df <- function(x = ensanut_100k, food){
     filter(edad_categorica == "preescolares") %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica) %>%
@@ -81,7 +81,7 @@ nutri_df <- function(x = ensanut_100k, food){
     filter(edad_categorica == "escolares") %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica) %>%
@@ -90,7 +90,7 @@ nutri_df <- function(x = ensanut_100k, food){
     filter(edad_categorica == "adultos") %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -98,9 +98,9 @@ nutri_df <- function(x = ensanut_100k, food){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos")))
 
@@ -118,7 +118,7 @@ nutri_state_plot <- function(x = ensanut_100k, food, state){
     filter(descripcion_entidad == state) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, descripcion_entidad) %>%
@@ -128,7 +128,7 @@ nutri_state_plot <- function(x = ensanut_100k, food, state){
     filter(descripcion_entidad == state) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, descripcion_entidad) %>%
@@ -138,7 +138,7 @@ nutri_state_plot <- function(x = ensanut_100k, food, state){
     filter(descripcion_entidad == state) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -147,9 +147,9 @@ nutri_state_plot <- function(x = ensanut_100k, food, state){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos"))) %>%
     ggplot(aes(x = dias_comio, y = porcentaje, fill = edad_categorica)) +
@@ -170,7 +170,7 @@ nutri_state_df <- function(x = ensanut_100k, food, state){
     filter(descripcion_entidad == state) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, descripcion_entidad) %>%
@@ -180,7 +180,7 @@ nutri_state_df <- function(x = ensanut_100k, food, state){
     filter(descripcion_entidad == state) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, descripcion_entidad) %>%
@@ -190,7 +190,7 @@ nutri_state_df <- function(x = ensanut_100k, food, state){
     filter(descripcion_entidad == state) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -199,9 +199,9 @@ nutri_state_df <- function(x = ensanut_100k, food, state){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos")))
 }
@@ -218,7 +218,7 @@ nutri_city_plot <- function(x = ensanut_100k, food, city){
     filter(descripcion_municipio == city) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, descripcion_municipio) %>%
@@ -228,7 +228,7 @@ nutri_city_plot <- function(x = ensanut_100k, food, city){
     filter(descripcion_municipio == city) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, descripcion_municipio) %>%
@@ -238,7 +238,7 @@ nutri_city_plot <- function(x = ensanut_100k, food, city){
     filter(descripcion_municipio == city) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -247,9 +247,9 @@ nutri_city_plot <- function(x = ensanut_100k, food, city){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos"))) %>%
     ggplot(aes(x = dias_comio, y = porcentaje, fill = edad_categorica)) +
@@ -270,7 +270,7 @@ nutri_city_df <- function(x = ensanut_100k, food, city){
     filter(descripcion_municipio == city) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, descripcion_municipio) %>%
@@ -280,7 +280,7 @@ nutri_city_df <- function(x = ensanut_100k, food, city){
     filter(descripcion_municipio == city) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, descripcion_municipio) %>%
@@ -290,7 +290,7 @@ nutri_city_df <- function(x = ensanut_100k, food, city){
     filter(descripcion_municipio == city) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -299,9 +299,9 @@ nutri_city_df <- function(x = ensanut_100k, food, city){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos")))
 }
@@ -318,7 +318,7 @@ nutri_town_plot <- function(x = ensanut_100k, food, town){
     filter(descripcion_localidad == town) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, descripcion_localidad) %>%
@@ -328,7 +328,7 @@ nutri_town_plot <- function(x = ensanut_100k, food, town){
     filter(descripcion_localidad == town) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, descripcion_localidad) %>%
@@ -338,7 +338,7 @@ nutri_town_plot <- function(x = ensanut_100k, food, town){
     filter(descripcion_localidad == town) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -347,9 +347,9 @@ nutri_town_plot <- function(x = ensanut_100k, food, town){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos"))) %>%
     ggplot(aes(x = dias_comio, y = porcentaje, fill = edad_categorica)) +
@@ -370,7 +370,7 @@ nutri_town_df <- function(x = ensanut_100k, food, town){
     filter(descripcion_localidad == town) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, descripcion_localidad) %>%
@@ -380,7 +380,7 @@ nutri_town_df <- function(x = ensanut_100k, food, town){
     filter(descripcion_localidad == town) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, descripcion_localidad) %>%
@@ -390,7 +390,7 @@ nutri_town_df <- function(x = ensanut_100k, food, town){
     filter(descripcion_localidad == town) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -399,9 +399,9 @@ nutri_town_df <- function(x = ensanut_100k, food, town){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos")))
 }
@@ -418,7 +418,7 @@ nutri_region_plot <- function(x = ensanut_100k, food, region){
     filter(region_nutricion == region) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, region_nutricion) %>%
@@ -428,7 +428,7 @@ nutri_region_plot <- function(x = ensanut_100k, food, region){
     filter(region_nutricion == region) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, region_nutricion) %>%
@@ -438,7 +438,7 @@ nutri_region_plot <- function(x = ensanut_100k, food, region){
     filter(region_nutricion == region) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -447,9 +447,9 @@ nutri_region_plot <- function(x = ensanut_100k, food, region){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos"))) %>%
     ggplot(aes(x = dias_comio, y = porcentaje, fill = edad_categorica)) +
@@ -470,7 +470,7 @@ nutri_region_df <- function(x = ensanut_100k, food, region){
     filter(region_nutricion == region) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, region_nutricion) %>%
@@ -480,7 +480,7 @@ nutri_region_df <- function(x = ensanut_100k, food, region){
     filter(region_nutricion == region) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, region_nutricion) %>%
@@ -490,7 +490,7 @@ nutri_region_df <- function(x = ensanut_100k, food, region){
     filter(region_nutricion == region) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -499,9 +499,9 @@ nutri_region_df <- function(x = ensanut_100k, food, region){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos")))
 }
@@ -518,7 +518,7 @@ nutri_area_plot <- function(x = ensanut_100k, food, zone){
     filter(area == zone) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, area) %>%
@@ -528,7 +528,7 @@ nutri_area_plot <- function(x = ensanut_100k, food, zone){
     filter(area == zone) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, area) %>%
@@ -538,7 +538,7 @@ nutri_area_plot <- function(x = ensanut_100k, food, zone){
     filter(area == zone) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -547,9 +547,9 @@ nutri_area_plot <- function(x = ensanut_100k, food, zone){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos"))) %>%
     ggplot(aes(x = dias_comio, y = porcentaje, fill = edad_categorica)) +
@@ -570,7 +570,7 @@ nutri_area_df <- function(x = ensanut_100k, food, zone){
     filter(area == zone) %>%
     filter(numero_alimento == food)
 
-  prees_total <- prees$freq
+  prees_total <- prees$n
 
   esco <- x %>%
     select(numero_alimento, edad_categorica, area) %>%
@@ -580,7 +580,7 @@ nutri_area_df <- function(x = ensanut_100k, food, zone){
     filter(area == zone) %>%
     filter(numero_alimento == food)
 
-  esco_total <- esco$freq
+  esco_total <- esco$n
 
   adul <- x %>%
     select(numero_alimento, edad_categorica, area) %>%
@@ -590,7 +590,7 @@ nutri_area_df <- function(x = ensanut_100k, food, zone){
     filter(area == zone) %>%
     filter(numero_alimento == food)
 
-  adul_total <- adul$freq
+  adul_total <- adul$n
 
 
   x %>%
@@ -599,9 +599,9 @@ nutri_area_df <- function(x = ensanut_100k, food, zone){
     select(dias_comio, edad_categorica) %>%
     group_by(edad_categorica) %>%
     count() %>%
-    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ freq/prees_total,
-                                  edad_categorica == "escolares" ~ freq/esco_total,
-                                  edad_categorica == "adultos" ~ freq/adul_total),
+    mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
+                                  edad_categorica == "escolares" ~ n/esco_total,
+                                  edad_categorica == "adultos" ~ n/adul_total),
            edad_categorica = factor(edad_categorica, levels = c("preescolares",
                                                                 "escolares", "adultos")))
 }
