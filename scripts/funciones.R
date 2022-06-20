@@ -67,7 +67,7 @@ nutri_df <- function(x = ensanut_100k, food){
 
   prees <- x %>%
     select(numero_alimento, edad_categorica) %>%
-    group_by(edad_categorica) %>%
+    group_by(numero_alimento, edad_categorica) %>%
     count() %>%
     filter(edad_categorica == "preescolares") %>%
     filter(numero_alimento == food)
@@ -76,7 +76,7 @@ nutri_df <- function(x = ensanut_100k, food){
 
   esco <- x %>%
     select(numero_alimento, edad_categorica) %>%
-    group_by(edad_categorica) %>%
+    group_by(numero_alimento, edad_categorica) %>%
     count() %>%
     filter(edad_categorica == "escolares") %>%
     filter(numero_alimento == food)
@@ -85,7 +85,7 @@ nutri_df <- function(x = ensanut_100k, food){
 
   adul <- x %>%
     select(numero_alimento, edad_categorica) %>%
-    group_by(edad_categorica) %>%
+    group_by(numero_alimento, edad_categorica) %>%
     count() %>%
     filter(edad_categorica == "adultos") %>%
     filter(numero_alimento == food)
@@ -96,7 +96,7 @@ nutri_df <- function(x = ensanut_100k, food){
   x %>%
     filter(numero_alimento == food) %>%
     select(dias_comio, edad_categorica) %>%
-    group_by(edad_categorica) %>%
+    group_by(dias_comio, edad_categorica) %>%
     count() %>%
     mutate(porcentaje = case_when(edad_categorica == "preescolares" ~ n/prees_total,
                                   edad_categorica == "escolares" ~ n/esco_total,
