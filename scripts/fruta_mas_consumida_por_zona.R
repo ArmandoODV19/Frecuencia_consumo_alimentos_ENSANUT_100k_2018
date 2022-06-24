@@ -224,3 +224,44 @@ ensanut_100k %>%
   group_by(numero_alimento, consumo) %>%
   count() %>%
   mutate(porcentaje = n/15958)
+
+
+# zona centro
+
+ensanut_100k %>%
+  filter(categoria == "frutas") %>%
+  select(descripcion_entidad, descripcion_municipio, descripcion_localidad,
+         sexo, numero_alimento, dias_comio, categoria, region_nutricion,
+         area, edad_categorica) %>%
+  filter(region_nutricion == "centro") %>%
+  select(dias_comio, edad_categorica, numero_alimento) %>%
+  mutate(consumo = ifelse(dias_comio=="0", 0,1)) %>%
+  filter(consumo == 1) %>%
+  group_by(numero_alimento, consumo) %>%
+  count() %>%
+  mutate(porcentaje = n/11422) %>%
+  ggplot(aes(x = numero_alimento, y = porcentaje, fill = numero_alimento)) +
+  xlab("Frutas") +
+  ylab("Porcentaje") +
+  geom_col() +
+  theme_classic() +
+  theme(legend.position = "none")+
+  theme(axis.text.x=element_text(angle = 45, hjust = 1))
+
+
+ensanut_100k %>%
+  filter(categoria == "frutas") %>%
+  select(descripcion_entidad, descripcion_municipio, descripcion_localidad,
+         sexo, numero_alimento, dias_comio, categoria, region_nutricion,
+         area, edad_categorica) %>%
+  filter(region_nutricion == "centro") %>%
+  select(dias_comio, edad_categorica, numero_alimento) %>%
+  mutate(consumo = ifelse(dias_comio=="0", 0,1)) %>%
+  filter(consumo == 1) %>%
+  group_by(numero_alimento, consumo) %>%
+  count() %>%
+  mutate(porcentaje = n/11422)
+
+# cdmx
+
+
