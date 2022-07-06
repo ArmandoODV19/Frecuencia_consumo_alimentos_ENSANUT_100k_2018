@@ -417,20 +417,20 @@ ensanut_100k %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
-  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/15963,
-                                categoria == "botanas_dulces_postres" ~ n/8673,
-                                categoria == "carnes_embutido_huevo" ~ n/10568,
-                                categoria == "cereales_tuberculos" ~ n/9224,
-                                categoria == "comida_rapida" ~ n/1629,
-                                categoria == "frutas" ~ n/11422,
-                                categoria == "lacteos" ~ n/8309,
-                                categoria == "leguminosas" ~ n/5456,
-                                categoria == "miscelaneos" ~ n/1480,
-                                categoria == "pescado_mariscos" ~ n/1326,
-                                categoria == "productos_maiz" ~ n/3717,
-                                categoria == "sopás_cremas_pastas" ~ n/5481,
-                                categoria == "suplementos" ~ n/531,
-                                categoria == "verduras" ~ n/12638)) %>%
+  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/60685,
+                                categoria == "botanas_dulces_postres" ~ n/50442,
+                                categoria == "carnes_embutido_huevo" ~ n/36030,
+                                categoria == "cereales_tuberculos" ~ n/61251,
+                                categoria == "comida_rapida" ~ n/14412,
+                                categoria == "frutas" ~ n/57648,
+                                categoria == "lacteos" ~ n/61817,
+                                categoria == "leguminosas" ~ n/18581,
+                                categoria == "miscelaneos" ~ n/61251,
+                                categoria == "pescado_mariscos" ~ n/14412,
+                                categoria == "productos_maiz" ~ n/28824,
+                                categoria == "sopás_cremas_pastas" ~ n/21618,
+                                categoria == "suplementos" ~ n/19147,
+                                categoria == "verduras" ~ n/64854)) %>%
   ggplot(aes(x = categoria, y = porcentaje, fill = categoria)) +
   geom_boxplot() +
   geom_jitter(aes(color = dias_comio), size = 5)+
@@ -442,9 +442,8 @@ ensanut_100k %>%
 
 
 ensanut_100k %>%
-  filter(tamano_porcion %in% c("C", "E", "G", "M"),
-         region_nutricion == "centro",
-         categoria == "verduras") %>%
+  filter(region_nutricion == "centro",
+         categoria == "suplementos") %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
