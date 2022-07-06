@@ -282,20 +282,20 @@ ensanut_100k %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
-  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/51240,
-                                categoria == "botanas_dulces_postres" ~ n/23608,
-                                categoria == "carnes_embutido_huevo" ~ n/32858,
-                                categoria == "cereales_tuberculos" ~ n/26553,
-                                categoria == "comida_rapida" ~ n/4434,
-                                categoria == "frutas" ~ n/33736,
-                                categoria == "lacteos" ~ n/23973,
-                                categoria == "leguminosas" ~ n/17356,
-                                categoria == "miscelaneos" ~ n/4158,
-                                categoria == "pescado_mariscos" ~ n/4522,
-                                categoria == "productos_maiz" ~ n/12454,
-                                categoria == "sopás_cremas_pastas" ~ n/17933,
-                                categoria == "suplementos" ~ n/1654,
-                                categoria == "verduras" ~ n/34699,)) %>%
+  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/197847,
+                                categoria == "botanas_dulces_postres" ~ n/164556,
+                                categoria == "carnes_embutido_huevo" ~ n/117540,
+                                categoria == "cereales_tuberculos" ~ n/199818,
+                                categoria == "comida_rapida" ~ n/47016,
+                                categoria == "frutas" ~ n/188064,
+                                categoria == "lacteos" ~ n/201789,
+                                categoria == "leguminosas" ~ n/60741,
+                                categoria == "miscelaneos" ~ n/199818,
+                                categoria == "pescado_mariscos" ~ n/47016,
+                                categoria == "productos_maiz" ~ n/94032,
+                                categoria == "sopás_cremas_pastas" ~ n/70524,
+                                categoria == "suplementos" ~ n/62712,
+                                categoria == "verduras" ~ n/211572)) %>%
   ggplot(aes(x = categoria, y = porcentaje, fill = categoria)) +
   geom_boxplot() +
   geom_jitter(aes(color = dias_comio), size = 5)+
@@ -307,8 +307,7 @@ ensanut_100k %>%
 
 
 ensanut_100k %>%
-  filter(tamano_porcion %in% c("C", "E", "G", "M"),
-         categoria == "verduras") %>%
+  filter(categoria == "verduras") %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
@@ -326,20 +325,20 @@ ensanut_100k %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
-  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/7774,
-                                categoria == "botanas_dulces_postres" ~ n/4343,
-                                categoria == "carnes_embutido_huevo" ~ n/5602,
-                                categoria == "cereales_tuberculos" ~ n/4672,
-                                categoria == "comida_rapida" ~ n/1124,
-                                categoria == "frutas" ~ n/4483,
-                                categoria == "lacteos" ~ n/3563,
-                                categoria == "leguminosas" ~ n/2772,
-                                categoria == "miscelaneos" ~ n/786,
-                                categoria == "pescado_mariscos" ~ n/630,
-                                categoria == "productos_maiz" ~ n/1461,
-                                categoria == "sopás_cremas_pastas" ~ n/2593,
-                                categoria == "suplementos" ~ n/181,
-                                categoria == "verduras" ~ n/5151,)) %>%
+  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/30494,
+                                categoria == "botanas_dulces_postres" ~ n/25340,
+                                categoria == "carnes_embutido_huevo" ~ n/18100,
+                                categoria == "cereales_tuberculos" ~ n/30770,
+                                categoria == "comida_rapida" ~ n/7240,
+                                categoria == "frutas" ~ n/28960,
+                                categoria == "lacteos" ~ n/31046,
+                                categoria == "leguminosas" ~ n/9326,
+                                categoria == "miscelaneos" ~ n/30770,
+                                categoria == "pescado_mariscos" ~ n/7240,
+                                categoria == "productos_maiz" ~ n/14480,
+                                categoria == "sopás_cremas_pastas" ~ n/10860,
+                                categoria == "suplementos" ~ n/9602,
+                                categoria == "verduras" ~ n/32580)) %>%
   ggplot(aes(x = categoria, y = porcentaje, fill = categoria)) +
   geom_boxplot() +
   geom_jitter(aes(color = dias_comio), size = 5)+
@@ -351,8 +350,7 @@ ensanut_100k %>%
 
 
 ensanut_100k %>%
-  filter(tamano_porcion %in% c("C", "E", "G", "M"),
-         region_nutricion == "norte",
+  filter(region_nutricion == "norte",
          categoria == "verduras") %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
@@ -374,20 +372,20 @@ ensanut_100k %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
-  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/25110,
-                                categoria == "botanas_dulces_postres" ~ n/9173,
-                                categoria == "carnes_embutido_huevo" ~ n/14992,
-                                categoria == "cereales_tuberculos" ~ n/11228,
-                                categoria == "comida_rapida" ~ n/1343,
-                                categoria == "frutas" ~ n/15958,
-                                categoria == "lacteos" ~ n/10656,
-                                categoria == "leguminosas" ~ n/8433,
-                                categoria == "miscelaneos" ~ n/1606,
-                                categoria == "pescado_mariscos" ~ n/2354,
-                                categoria == "productos_maiz" ~ n/6793,
-                                categoria == "sopás_cremas_pastas" ~ n/8986,
-                                categoria == "suplementos" ~ n/901,
-                                categoria == "verduras" ~ n/14733,)) %>%
+  mutate(porcentaje = case_when(categoria == "bebidas" ~ n/97884,
+                                categoria == "botanas_dulces_postres" ~ n/81480,
+                                categoria == "carnes_embutido_huevo" ~ n/58200,
+                                categoria == "cereales_tuberculos" ~ n/98940,
+                                categoria == "comida_rapida" ~ n/23280,
+                                categoria == "frutas" ~ n/93120,
+                                categoria == "lacteos" ~ n/99996,
+                                categoria == "leguminosas" ~ n/30156,
+                                categoria == "miscelaneos" ~ n/98940,
+                                categoria == "pescado_mariscos" ~ n/23280,
+                                categoria == "productos_maiz" ~ n/46560,
+                                categoria == "sopás_cremas_pastas" ~ n/34920,
+                                categoria == "suplementos" ~ n/31212,
+                                categoria == "verduras" ~ n/104760,)) %>%
   ggplot(aes(x = categoria, y = porcentaje, fill = categoria)) +
   geom_boxplot() +
   geom_jitter(aes(color = dias_comio), size = 5)+
@@ -399,9 +397,8 @@ ensanut_100k %>%
 
 
 ensanut_100k %>%
-  filter(tamano_porcion %in% c("C", "E", "G", "M"),
-         region_nutricion == "sur",
-         categoria == "verduras") %>%
+  filter(region_nutricion == "sur",
+         categoria == "suplementos") %>%
   select(categoria, dias_comio) %>%
   group_by(categoria, dias_comio) %>%
   count() %>%
